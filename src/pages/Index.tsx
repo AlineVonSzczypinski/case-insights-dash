@@ -9,6 +9,7 @@ import { FinancialTables } from "@/components/FinancialTables";
 import { Timeline } from "@/components/Timeline";
 import { LoanAnalysis } from "@/components/LoanAnalysis";
 import { Building2, DollarSign, TrendingDown, AlertTriangle, BarChart3, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
