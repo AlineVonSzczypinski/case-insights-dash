@@ -79,6 +79,54 @@ const Index = () => {
           </div>
         </Section>
 
+        {/* Given vs. Independent Analysis */}
+        <Section title="What Was Given vs. What I Analyzed" subtitle="Case inputs provided vs. independent judgments required">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+            <div className="bg-card border border-success/40 rounded-lg p-4 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wider text-success mb-3">✓ Provided in the Case</p>
+              <ul className="space-y-1.5">
+                {[
+                  "Monthly IS + BS (Aug 2022 – May 2023)",
+                  "Original + revised sales forecasts (Oct '22 – Sep '23)",
+                  "Loan terms: $10M @ 6%, due 6/30/23; $4.8M CAPEX proposed",
+                  "Net-30 terms on sales + purchases; $240K/mo depreciation; 25% tax rate",
+                  "Supply chain bottleneck narrative; $10.08M WIP releasing in June",
+                  "$4.88M excess inventory → drawn down $1.22M/month over 4 months",
+                  "Raw material purchases cut to $9.8M/month going forward",
+                  "$5.4M Polish customer advance already received",
+                  "$2.4M dividend Robinson plans to pay in September",
+                ].map((item, i) => (
+                  <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                    <span className="text-success flex-shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-card border border-primary/40 rounded-lg p-4 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">⚙ My Independent Analysis</p>
+              <ul className="space-y-1.5">
+                {[
+                  "Built cash flow statements from scratch (reconciling IS + BS changes)",
+                  "Applied ~1/3 haircut to June backlog (companies tend to be optimistic); used revised figures Jul–Sep",
+                  "Derived COGS/Sales ratio from 6-month rolling avg; layered in $1.22M/mo inventory drawdown",
+                  "Averaged prior 6 normal A/R months (~$11.75M) — excluded distorted Apr–May",
+                  "Modeled A/P = $9.8M/mo purchases (net-30) instead of avg A/P/COGS method (case-warned)",
+                  "Added $4.8M ÷ 240 months = $20K/mo incremental depreciation starting August",
+                  "Identified & modeled $3.2M tax catch-up payment due 9/15/23",
+                  "Traced $5.4M advance drawdown: Jun $3.6M + Jul $3.6M + Aug $1.2M vs. A/R",
+                  "Computed Altman Z-Score using proxies: MVE = $50M (buyback-implied), RE = equity",
+                ].map((item, i) => (
+                  <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                    <span className="text-primary flex-shrink-0">→</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Section>
+
         {/* KPI Row */}
         <Section title="Key Financial Metrics" subtitle="As of May 31, 2023 (most recent actual) and Sep 30, 2023 forecast">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-2">
