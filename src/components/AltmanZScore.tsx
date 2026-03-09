@@ -88,11 +88,14 @@ export const AltmanZScore = () => {
           </div>
           <div className="space-y-2">
             {components.map((c) => (
-              <div key={c.name} className="flex items-center justify-between text-xs border-b border-border pb-1">
-                <span className="text-muted-foreground">{c.name}</span>
-                <span className="font-mono font-semibold text-foreground">
-                  {c.coeff} × {c.value} = <span className="text-primary">{c.contribution}</span>
-                </span>
+              <div key={c.name} className="text-xs border-b border-border pb-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-muted-foreground">{c.name}</span>
+                  <span className="font-mono font-semibold text-foreground">
+                    {c.coeff} × {c.value} = <span className="text-primary">{c.contribution}</span>
+                  </span>
+                </div>
+                <p className="text-[10px] text-muted-foreground/70 italic mt-0.5">{c.note}</p>
               </div>
             ))}
             <div className="flex items-center justify-between text-xs font-bold pt-1">
@@ -101,7 +104,7 @@ export const AltmanZScore = () => {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-3 bg-muted/50 rounded p-2">
-            ⚠️ Despite a high Z-Score, the case warns against complacency: Z-Score uses TTM sales and equity proxies, and does not capture the severe cash crunch risk at June 30, 2023.
+            ⚠️ Despite being in the Safe Zone (Z &gt; 2.99), this is misleading — it's backward-looking and misses the imminent liquidity crunch at June 30, 2023. Key proxies used: MVE = $50M (buyback-implied), RE = shareholders' equity.
           </p>
         </div>
 
