@@ -241,7 +241,7 @@ export default function Forecast() {
                       {row.label}
                     </td>
                     {monthTable.map((m) => {
-                      const val = (m as Record<string, number | null>)[row.key] ?? null;
+                      const val = (m as unknown as Record<string, number | null>)[row.key] ?? null;
                       const isNeg = val !== null && val < 0;
                       return (
                         <td key={m.month} className={`text-right px-4 py-2 font-mono tabular-nums ${isNeg ? "text-danger" : row.highlight ? "text-danger" : "text-foreground"}`}>
