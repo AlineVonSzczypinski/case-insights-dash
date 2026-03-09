@@ -5,18 +5,18 @@ import { cn } from "@/lib/utils";
 export const AltmanZScore = () => {
   const { wc, ta, re, ebit, mve, tl, sales, zScore } = altmanZScore;
 
-  const x1 = +(wc / ta).toFixed(3);
-  const x2 = +(re / ta).toFixed(3);
-  const x3 = +(ebit / ta).toFixed(3);
-  const x4 = +(mve / tl).toFixed(3);
-  const x5 = +(sales / ta).toFixed(3);
+  const x1 = +(wc / ta).toFixed(3);   // WC = CA - CL excl. Notes Payable = 43,070 - 20,321
+  const x2 = +(re / ta).toFixed(3);   // RE proxy = Shareholders' Equity (no separate RE line)
+  const x3 = +(ebit / ta).toFixed(3); // EBIT TTM annualized Oct'22–May'23
+  const x4 = +(mve / tl).toFixed(3);  // MVE proxy: buyback implied $50M total equity value
+  const x5 = +(sales / ta).toFixed(3); // Sales TTM annualized
 
   const components = [
-    { name: "X1 = Working Capital / Total Assets", coeff: 1.2, value: x1, contribution: +(1.2 * x1).toFixed(3) },
-    { name: "X2 = Retained Earnings / Total Assets", coeff: 1.4, value: x2, contribution: +(1.4 * x2).toFixed(3) },
-    { name: "X3 = EBIT / Total Assets", coeff: 3.3, value: x3, contribution: +(3.3 * x3).toFixed(3) },
-    { name: "X4 = Market Value Equity / Total Liabilities", coeff: 0.6, value: x4, contribution: +(0.6 * x4).toFixed(3) },
-    { name: "X5 = Sales / Total Assets (annualized TTM)", coeff: 1.0, value: x5, contribution: +(1.0 * x5).toFixed(3) },
+    { name: "X1 = Working Capital / Total Assets", coeff: 1.2, value: x1, contribution: +(1.2 * x1).toFixed(3), note: "WC = CA − (CL excl. Notes Payable)" },
+    { name: "X2 = Retained Earnings / Total Assets", coeff: 1.4, value: x2, contribution: +(1.4 * x2).toFixed(3), note: "Proxy: Shareholders' equity (no separate RE)" },
+    { name: "X3 = EBIT / Total Assets", coeff: 3.3, value: x3, contribution: +(3.3 * x3).toFixed(3), note: "TTM EBIT annualized Oct'22–May'23" },
+    { name: "X4 = Mkt Value Equity / Total Liabilities", coeff: 0.6, value: x4, contribution: +(0.6 * x4).toFixed(3), note: "Proxy: $15M buyback → $50M implied total equity" },
+    { name: "X5 = Net Sales / Total Assets (TTM ann.)", coeff: 1.0, value: x5, contribution: +(1.0 * x5).toFixed(3), note: "TTM annualized sales Oct'22–May'23" },
   ];
 
   const zoneColor = zScore > 2.99 ? "success" : zScore > 1.8 ? "warning" : "danger";
