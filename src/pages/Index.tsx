@@ -9,6 +9,7 @@ import { FinancialTables } from "@/components/FinancialTables";
 import { Timeline } from "@/components/Timeline";
 import { LoanAnalysis } from "@/components/LoanAnalysis";
 import { Building2, DollarSign, TrendingDown, AlertTriangle, BarChart3, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -31,10 +32,18 @@ const Index = () => {
                 Credit Risk Assessment · Georgia First Bank · June 17, 2023
               </p>
             </div>
-            <div className="text-right text-sm opacity-70">
-              <p className="font-semibold">Analyst:</p>
-              <p>Work Sample</p>
-              <p className="mt-1">Version 3/11/25</p>
+            <div className="text-right text-sm opacity-70 flex flex-col items-end gap-3">
+              <div>
+                <p className="font-semibold">Analyst:</p>
+                <p>Work Sample</p>
+                <p className="mt-0.5">Version 3/11/25</p>
+              </div>
+              <Link
+                to="/forecast"
+                className="text-xs font-bold bg-primary-foreground text-primary px-3 py-1.5 rounded border border-primary-foreground/30 hover:opacity-80 transition-opacity"
+              >
+                Forecast View →
+              </Link>
             </div>
           </div>
         </div>
