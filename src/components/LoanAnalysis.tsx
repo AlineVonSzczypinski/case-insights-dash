@@ -86,8 +86,8 @@ export const LoanAnalysis = () => {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {[loanDecision.rollover, loanDecision.capex].map((loan) => {
-            const borderColor = loan.color === "success" ? "border-success" : loan.color === "warning" ? "border-warning" : "border-danger";
-            const badgeBg = loan.color === "success" ? "bg-success text-primary-foreground" : loan.color === "warning" ? "bg-warning text-primary-foreground" : "bg-danger text-danger-foreground";
+          const borderColor = "border-warning";
+            const badgeBg = "bg-warning text-primary-foreground";
             return (
               <div key={loan.title} className={cn("bg-card border rounded-lg p-5 shadow-sm border-t-4", borderColor)}>
                 <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">{loan.title}</p>
