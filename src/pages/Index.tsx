@@ -118,7 +118,7 @@ const Index = () => {
             />
             <KPICard
               title="Altman Z-Score"
-              value="6.9"
+              value="4.36"
               subtitle="Safe zone (>2.99)"
               trend="up"
               trendLabel="Low structural risk"
