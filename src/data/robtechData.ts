@@ -67,15 +67,21 @@ export const cashFlowData = [
   { month: "Sep '23*", cfops: 2409, cfinv: 0, cffin: -14800, netChange: -12391 },
 ];
 
+// Altman Z-Score @ May 31, 2023
+// MVE proxy: $15M buyback = 1M shares at $15 → implied total equity value $50M
+// Working Capital = Current Assets - Current Liabilities (excl. Notes Payable)
+// CL excl. NP = 30,321 - 10,000 = 20,321 → WC = 43,070 - 20,321 = 22,749
+// EBIT: TTM annualized from Oct'22–May'23 actuals (8 months): sum EBT+interest = 6,170 → annualized = 9,255
+// Sales TTM: Oct'22–May'23 annualized = 88,150 * 12/8 = 132,225
 export const altmanZScore = {
-  wc: 11148,
+  wc: 22749,   // Current Assets - (CL excl. Notes Payable)
   ta: 71174,
-  re: 40853,
-  ebit: 9192,
-  mve: 50000,
+  re: 40853,   // Shareholders' equity as RE proxy (no separate RE reported)
+  ebit: 9255,  // TTM EBIT annualized from Oct'22–May'23
+  mve: 50000,  // $15M buyback implied: 1M shares × $15 = $15M → pre-buyback total equity ~$50M
   tl: 30321,
-  sales: 135341,
-  zScore: 6.9,
+  sales: 132225, // TTM annualized sales
+  zScore: 4.36,
 };
 
 export const keyMetrics = {
@@ -85,7 +91,7 @@ export const keyMetrics = {
   existingLoan: 10000,
   capexLoan: 4800,
   totalDebt: 14800,
-  altmanZ: 6.9,
+  altmanZ: 4.36,
   equityMay23: 40853,
   inventoryBuildupExcess: 4880,
 };

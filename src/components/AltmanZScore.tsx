@@ -5,18 +5,18 @@ import { cn } from "@/lib/utils";
 export const AltmanZScore = () => {
   const { wc, ta, re, ebit, mve, tl, sales, zScore } = altmanZScore;
 
-  const x1 = +(wc / ta).toFixed(3);
-  const x2 = +(re / ta).toFixed(3);
-  const x3 = +(ebit / ta).toFixed(3);
-  const x4 = +(mve / tl).toFixed(3);
-  const x5 = +(sales / ta).toFixed(3);
+  const x1 = +(wc / ta).toFixed(3);   // WC = CA - CL excl. Notes Payable = 43,070 - 20,321
+  const x2 = +(re / ta).toFixed(3);   // RE proxy = Shareholders' Equity (no separate RE line)
+  const x3 = +(ebit / ta).toFixed(3); // EBIT TTM annualized Oct'22–May'23
+  const x4 = +(mve / tl).toFixed(3);  // MVE proxy: buyback implied $50M total equity value
+  const x5 = +(sales / ta).toFixed(3); // Sales TTM annualized
 
   const components = [
-    { name: "X1 = Working Capital / Total Assets", coeff: 1.2, value: x1, contribution: +(1.2 * x1).toFixed(3) },
-    { name: "X2 = Retained Earnings / Total Assets", coeff: 1.4, value: x2, contribution: +(1.4 * x2).toFixed(3) },
-    { name: "X3 = EBIT / Total Assets", coeff: 3.3, value: x3, contribution: +(3.3 * x3).toFixed(3) },
-    { name: "X4 = Market Value Equity / Total Liabilities", coeff: 0.6, value: x4, contribution: +(0.6 * x4).toFixed(3) },
-    { name: "X5 = Sales / Total Assets (annualized TTM)", coeff: 1.0, value: x5, contribution: +(1.0 * x5).toFixed(3) },
+    { name: "X1 = Working Capital / Total Assets", coeff: 1.2, value: x1, contribution: +(1.2 * x1).toFixed(3), note: "WC = CA − (CL excl. Notes Payable)" },
+    { name: "X2 = Retained Earnings / Total Assets", coeff: 1.4, value: x2, contribution: +(1.4 * x2).toFixed(3), note: "Proxy: Shareholders' equity (no separate RE)" },
+    { name: "X3 = EBIT / Total Assets", coeff: 3.3, value: x3, contribution: +(3.3 * x3).toFixed(3), note: "TTM EBIT annualized Oct'22–May'23" },
+    { name: "X4 = Mkt Value Equity / Total Liabilities", coeff: 0.6, value: x4, contribution: +(0.6 * x4).toFixed(3), note: "Proxy: $15M buyback → $50M implied total equity" },
+    { name: "X5 = Net Sales / Total Assets (TTM ann.)", coeff: 1.0, value: x5, contribution: +(1.0 * x5).toFixed(3), note: "TTM annualized sales Oct'22–May'23" },
   ];
 
   const zoneColor = zScore > 2.99 ? "success" : zScore > 1.8 ? "warning" : "danger";
@@ -88,11 +88,14 @@ export const AltmanZScore = () => {
           </div>
           <div className="space-y-2">
             {components.map((c) => (
-              <div key={c.name} className="flex items-center justify-between text-xs border-b border-border pb-1">
-                <span className="text-muted-foreground">{c.name}</span>
-                <span className="font-mono font-semibold text-foreground">
-                  {c.coeff} × {c.value} = <span className="text-primary">{c.contribution}</span>
-                </span>
+              <div key={c.name} className="text-xs border-b border-border pb-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-muted-foreground">{c.name}</span>
+                  <span className="font-mono font-semibold text-foreground">
+                    {c.coeff} × {c.value} = <span className="text-primary">{c.contribution}</span>
+                  </span>
+                </div>
+                <p className="text-[10px] text-muted-foreground/70 italic mt-0.5">{c.note}</p>
               </div>
             ))}
             <div className="flex items-center justify-between text-xs font-bold pt-1">
@@ -101,7 +104,7 @@ export const AltmanZScore = () => {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-3 bg-muted/50 rounded p-2">
-            ⚠️ Despite a high Z-Score, the case warns against complacency: Z-Score uses TTM sales and equity proxies, and does not capture the severe cash crunch risk at June 30, 2023.
+            ⚠️ Despite being in the Safe Zone (Z &gt; 2.99), this is misleading — it's backward-looking and misses the imminent liquidity crunch at June 30, 2023. Key proxies used: MVE = $50M (buyback-implied), RE = shareholders' equity.
           </p>
         </div>
 
