@@ -26,7 +26,6 @@ export const CashLiquidityChart = () => {
       title="Cash & Inventory Trends"
       subtitle="Cash and inventory levels over the analysis period. Inventory buildup in Apr–May '23 signals supply chain impact."
       badge="Liquidity"
-      badge="Liquidity"
     >
       <div className="bg-card border rounded-lg p-4 shadow-sm">
         <ResponsiveContainer width="100%" height={300}>
