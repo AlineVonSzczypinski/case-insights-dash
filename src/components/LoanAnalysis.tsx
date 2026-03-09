@@ -11,7 +11,7 @@ const loanDecision = {
       "Jun '23 revenue surge ($21.4M forecast) driven by $10.1M WIP release + Polish advance orders",
       "Inventory is liquid and working down at $1.22M/month",
       "Strong historical repayment track record (no debt before Sep '22 loan)",
-      "Altman Z-Score of 6.9 indicates low structural default risk",
+      "Altman Z-Score of 4.36 (Safe Zone) indicates low structural default risk",
     ],
     conditions: [
       "Require monthly financial reporting (balance sheet + income statement)",
